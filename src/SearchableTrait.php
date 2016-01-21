@@ -31,6 +31,11 @@ trait SearchableTrait
         return $this->scopeSearchRestricted($q, $search, null, $threshold, $entireText);
     }
 
+    public function scopeSearchColumns(Builder $q, $search, $columns) {
+        $this->searchable['columns'] = $columns;
+        return $this->scopeSearchRestricted($q, $search, null);
+    }
+    
     public function scopeSearchRestricted(Builder $q, $search, $restriction, $threshold = null, $entireText = false)
     {
         $query = clone $q;
